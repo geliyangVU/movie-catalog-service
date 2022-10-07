@@ -12,3 +12,16 @@ Microservice project
 ## ratings-data-service (https://github.com/geliyangVU/ratings-data-service)
 
 
+
+
+# Class CatalogItem
+```
+
+CatalogItem{
+  String name;
+  String desc;
+  int rating;
+}
+
+
+```
