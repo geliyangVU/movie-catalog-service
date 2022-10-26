@@ -25,16 +25,19 @@ public class MovieCatalogResource {
 
     @RequestMapping("/{userId}")
     public List<CatalogItem> getCatalog(@PathVariable("userId") String userId){
+//        System.out.println("inside getCatalog function");
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.getForObject("http://localhost:/8081/movies/foo", Movie.class);
+
         List<Rating> ratings = Arrays.asList(
                 new Rating("1234",4),
                 new Rating("5678",3)
         );
 
-        return ratings.stream().map(rating ->
-            new CatalogItem("Transformers", "Transformers action movie",4)
+        return ratings.stream().map(rating ->{
+            //make call for rating datas service
+            Movie movie = restTemplate.getForObject("http://localhost:8085/movies/"+rating.getMovieId(), Movie.class);
+            return new CatalogItem(movie.getName(), "Transformers action movie",rating.getRating());
 
-        ).collect(Collectors.toList());
+        }).collect(Collectors.toList());
     }
 }
