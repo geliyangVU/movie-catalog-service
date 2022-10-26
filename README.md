@@ -25,3 +25,11 @@ CatalogItem{
 
 
 ```
+
+
+Tomcat Port: 8075
+API example:
+http://localhost:8075/catalog/foo
+
+endpoint
+/catalog/{userId}
