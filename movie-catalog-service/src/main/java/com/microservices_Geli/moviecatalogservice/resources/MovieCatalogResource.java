@@ -4,6 +4,7 @@ package com.microservices_Geli.moviecatalogservice.resources;
 import com.microservices_Geli.moviecatalogservice.models.CatalogItem;
 import com.microservices_Geli.moviecatalogservice.models.Movie;
 import com.microservices_Geli.moviecatalogservice.models.Rating;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,9 @@ public class MovieCatalogResource {
     //step 2, for each movie id, call movie info service and get details
 
     //put them all together
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     @RequestMapping("/{userId}")
     public List<CatalogItem> getCatalog(@PathVariable("userId") String userId){
